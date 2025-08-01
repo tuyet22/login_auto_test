@@ -1,7 +1,7 @@
 describe('Form Validation', () => {
  beforeEach(() => {
-    cy.wait(5000);
-   cy.visit('https://staging-app.listenlayer.com');
+    cy.wait(1000);
+    cy.visit('https://staging-app.listenlayer.com');
  });
 
   it('should navigate to the login page', () => {
@@ -35,4 +35,17 @@ describe('Form Validation', () => {
     cy.get('form').submit();
     cy.get('.invalid-feedback').should('contain', 'Password must be at least 8 characters');
   });
+
+  it.only('clear error messages', () => {
+    // cy.get('input[name="email"]').type('test@example.com');
+    // cy.get('input[name="password"]').type('ValidPassword123');
+    cy.get('form').submit();
+    cy.get('.invalid-feedback').should('contain', 'Email is required');
+    cy.get('input[name="email"]').type('test@example.com');
+    cy.get('.invalid-feedback').should('not.contain', 'Email is required');
+  });
+
+
+
+
 });
