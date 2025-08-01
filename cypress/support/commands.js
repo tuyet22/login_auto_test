@@ -23,3 +23,23 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Custom command to perform a login action.
+Cypress.Commands.add('login', (email, password) => {
+  // Clear the input fields.
+  cy.get('input[name="email"]').clear();
+  cy.get('input[name="password"]').clear();
+
+  // Only type if the email and password are not empty strings.
+  if (email) {
+    cy.get('input[name="email"]').type(email);
+  }
+  if (password) {
+    cy.get('input[name="password"]').type(password);
+  }
+
+  cy.get('button[type="submit"]').click();
+});
+
+
+
