@@ -1,13 +1,7 @@
 describe('Form Validation', () => {
 
   beforeEach(() => {
-    cy.wait(1000);
-    cy.visit('https://staging-app.listenlayer.com/login');
-  });
-
-  // A simple test to ensure we have navigated to the correct page.
-  it('should navigate to the login page', () => {
-    cy.url().should('eq', 'https://staging-app.listenlayer.com/login');
+    cy.visitLoginPage();
   });
 
   // Test for an empty email field.

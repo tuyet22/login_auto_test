@@ -24,6 +24,15 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+
+// Custom command to visit the login page and check the URL.
+Cypress.Commands.add('visitLoginPage', () => {
+  cy.visit('https://staging-app.listenlayer.com/');
+  cy.url().should('include', '/login');
+});
+
+
+
 // Custom command to perform a login action.
 Cypress.Commands.add('login', (email, password) => {
   // Clear the input fields.
