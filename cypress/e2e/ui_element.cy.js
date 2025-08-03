@@ -45,13 +45,15 @@ describe('UI Elements', () => {
     it.only('verify Back to Home Page link', () => {
 
         // Verify the link to Home Page
-        cy.get
+        
         cy.get('.link-back-login').should('be.visible')
           .and('contain', 'Back to Home Page');
         
         //Verify arrow icon
         cy.get('.link-back-login').find('i.fal.fa-angle-left').should('be.visible');
+        cy.screenshot('Back to Home Page Link');
     });
+
 
 
 
